@@ -5,7 +5,7 @@ echo ""
 
 torify timeout 5 curl -sk $line/home_frameset.htm?Logout=true >/dev/null
 
-check=$(torify timeout 5 curl -sk -X POST $line/login -d "Language=fr&Password=sma&ButtonLogin=Connexion" -H "Content-Type: application/x-www-form-urlencoded") 
+check=$(torify timeout 5 curl -sk -X POST $line/login -d "Language=fr&Password=sma&ButtonLogin=Connexion" -H "Content-Type: application/x-www-form-urlencoded" | grep "location.reload") 
 
 if [ -z "$check" ];
 then
